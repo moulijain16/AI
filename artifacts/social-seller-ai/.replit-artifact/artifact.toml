@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Social Seller AI"
+description = "A premium course platform and marketing experience for the 30-Day AI Mastermind Programme by Lakshit Sethiya, with public enrollment pages, student learning flows, and an admin operations surface."
+version = "1.0.0"
+id = "artifacts/social-seller-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21559
+
+[services.development]
+run = "pnpm --filter @workspace/social-seller-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/social-seller-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/social-seller-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21559"
+BASE_PATH = "/"
