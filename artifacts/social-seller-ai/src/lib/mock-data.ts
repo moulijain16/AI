@@ -1,3 +1,5 @@
+export type AssessmentQuestion = { id: string; prompt: string; options: string[]; answer: string };
+
 export type Session = {
   id: string;
   day: number;
@@ -6,101 +8,34 @@ export type Session = {
   duration: string;
   description: string;
   takeaway: string;
+  objectives: string[];
   resources: string[];
   transcript: string[];
+  questions: AssessmentQuestion[];
 };
 
-export type Assignment = {
-  id: string;
-  day: number;
-  title: string;
-  prompt: string;
-  hint: string;
-  deliverable: string;
-};
+export type Assignment = { id: string; day: number; title: string; prompt: string; hint: string; deliverable: string };
+
+const question = (id: string, prompt: string, options: string[], answer: string): AssessmentQuestion => ({ id, prompt, options, answer });
 
 export const sessions: Session[] = [
-  {
-    id: 'signal-over-noise',
-    day: 1,
-    title: 'Signal over noise',
-    label: 'The AI opportunity map',
-    duration: '18 min',
-    description: 'Find the useful edge between what you already know and what the market is beginning to need.',
-    takeaway: 'A one-sentence business thesis you can test this week.',
-    resources: ['Opportunity map worksheet', 'The signal audit'],
-    transcript: ['The best AI businesses do not start with a tool. They start with a person who already has context.', 'Today we are separating signal from noise, then turning that signal into a small, testable promise.', 'Your job is not to know every model. Your job is to notice where work is still unnecessarily slow.'],
-  },
-  {
-    id: 'your-unfair-context',
-    day: 2,
-    title: 'Your unfair context',
-    label: 'Positioning for the AI era',
-    duration: '22 min',
-    description: 'Turn your lived experience, taste and pattern recognition into a sharp point of view.',
-    takeaway: 'Three buyer problems only you can explain clearly.',
-    resources: ['Context inventory', 'Positioning prompts'],
-    transcript: ['Context compounds. A tool can be copied; your earned understanding cannot.', 'We will map the rooms you have been in and the recurring friction you have seen there.', 'A clear point of view is a shortcut for the right people to recognize themselves.'],
-  },
-  {
-    id: 'build-the-first-offer',
-    day: 3,
-    title: 'Build the first offer',
-    label: 'From expertise to an asset',
-    duration: '25 min',
-    description: 'Package one transformation without hiding behind a sprawling curriculum or a long feature list.',
-    takeaway: 'A sellable beta offer with a believable outcome.',
-    resources: ['Offer canvas', 'Beta pricing notes'],
-    transcript: ['An offer is a decision made easy. It tells someone what changes, for whom, and what happens next.', 'Start narrow enough to deliver personally. Scale the system after you learn what works.', 'Proof is not polish. Proof is a clear before and after.'],
-  },
-  {
-    id: 'content-that-converts',
-    day: 4,
-    title: 'Content that converts',
-    label: 'Build your signal system',
-    duration: '20 min',
-    description: 'Create a repeatable publishing rhythm that teaches in public and invites the right conversations.',
-    takeaway: 'A 14-day content system built around one useful idea.',
-    resources: ['Signal system board', 'Hook library'],
-    transcript: ['Content is not a performance review. It is a trail of useful thinking your future buyers can follow.', 'One sharp observation can become a post, a lesson, an email and a conversation.', 'Consistency becomes easier when the system has somewhere to put the idea.'],
-  },
+  { id: 'prompt-engineering', day: 1, title: 'Prompt Engineering', label: 'Direct the model. Shape the output.', duration: '24 min', description: 'Build a repeatable prompting system that turns vague ideas into useful, reliable work with AI.', takeaway: 'A five-part prompt you can reuse across your creative and operational workflows.', objectives: ['Frame a task with context, role, and constraints', 'Use examples to steer quality', 'Build a prompt you can evaluate and improve'], resources: ['Prompt pattern library', 'Brief-to-prompt worksheet'], transcript: ['The best prompts are not clever spells. They are clear briefs with enough context to make a good decision.', 'Today we move from asking AI to do something to designing the conditions for a useful output.', 'The real advantage is the evaluation loop: prompt, inspect, refine, repeat.'], questions: [question('q1', 'Which prompt element most directly tells an AI system what success should look like?', ['A role label', 'An output constraint or evaluation criterion', 'A longer greeting', 'A list of unrelated tools'], 'An output constraint or evaluation criterion')] },
+  { id: 'branding-designing', day: 2, title: 'Branding & Designing', label: 'Make the signal recognisable.', duration: '31 min', description: 'Translate a point of view into a visual system that people can recognise before they read the name.', takeaway: 'A compact visual direction for your next AI-assisted brand asset.', objectives: ['Define a visual point of view', 'Use AI to explore without losing taste', 'Turn a direction into repeatable design rules'], resources: ['Brand direction canvas', 'Visual prompt starters'], transcript: ['A brand is a pattern of decisions. The tools can generate options, but your taste decides what belongs.', 'Start with tension: what should the work feel like, and what should it never feel like?', 'A small system used consistently beats a large system nobody remembers.'], questions: [question('q2', 'What should guide AI-generated brand exploration first?', ['The newest visual trend', 'A clear point of view and set of constraints', 'The maximum number of colours', 'A random moodboard'], 'A clear point of view and set of constraints')] },
+  { id: 'social-media-automation', day: 3, title: 'Social Media Automation', label: 'Build a publishing engine.', duration: '28 min', description: 'Design a practical content workflow that keeps your ideas moving without turning your voice into a template.', takeaway: 'A two-week publishing rhythm with prompts, review points, and a human edit.', objectives: ['Create a content source-of-truth', 'Automate repetitive production steps', 'Keep review and voice in the loop'], resources: ['Content engine map', 'Two-week calendar'], transcript: ['Automation should remove friction, not remove judgement.', 'Build the system around a source idea, then let each channel do its own job.', 'The human edit is where a useful observation becomes yours.'], questions: [question('q3', 'What should remain in a responsible social automation workflow?', ['A human review step', 'No content calendar', 'Only one generic caption', 'No source material'], 'A human review step')] },
+  { id: 'video-creation-music', day: 4, title: 'Video Creation & Music', label: 'Compose attention with intent.', duration: '35 min', description: 'Use AI-assisted video and sound workflows to make short-form work with a clear beat, hook, and point.', takeaway: 'A 30-second storyboard with a visual hook and a sound direction.', objectives: ['Write a visual-first hook', 'Plan a short edit before generating', 'Pair music and pacing with the message'], resources: ['Shot list template', 'Audio direction prompts'], transcript: ['A short video is a sequence of decisions about attention.', 'Use generation to move faster through possibilities, then edit with a human sense of rhythm.', 'A strong opening creates permission to stay for the idea.'], questions: [question('q4', 'What should a short AI-assisted video establish earliest?', ['Its export settings', 'A clear visual hook and reason to stay', 'Its full credits page', 'Every possible feature'], 'A clear visual hook and reason to stay')] },
+  { id: 'website-development', day: 5, title: 'Website Development', label: 'Ship the useful surface.', duration: '39 min', description: 'Turn a sharp offer into a working web experience with AI as your pair programmer and thinking partner.', takeaway: 'A first conversion-ready page mapped from one audience and one action.', objectives: ['Translate an offer into page structure', 'Use AI to accelerate implementation', 'Test the path from entry to action'], resources: ['Page architecture kit', 'Launch checklist'], transcript: ['A website is not a monument. It is a surface for learning what people understand and what they do next.', 'Keep the first version close to the promise. Every section should help a visitor make one decision.', 'AI can write code quickly; you still own the product judgement.'], questions: [question('q5', 'What is the most useful constraint for a first website version?', ['One clear audience and action', 'As many pages as possible', 'A hidden navigation', 'Every feature at launch'], 'One clear audience and action')] },
+  { id: 'whatsapp-voice-ai-agents', day: 6, title: 'WhatsApp & Voice AI Agents', label: 'Design useful conversations.', duration: '33 min', description: 'Map conversational agents that answer clearly, route intent, and know when a human should take over.', takeaway: 'A conversation map for one high-value customer moment.', objectives: ['Map intents and fallback paths', 'Write an agent voice with boundaries', 'Create a safe human handoff'], resources: ['Conversation map', 'Agent guardrail checklist'], transcript: ['An agent is a conversation system, not a magic button.', 'Good automation knows its boundary. The handoff is part of the experience, not a failure state.', 'Start with one moment where speed and clarity matter to the person on the other side.'], questions: [question('q6', 'What makes an AI agent trustworthy in a customer conversation?', ['It never hands off', 'Clear boundaries and a human fallback', 'It uses the longest response', 'It hides that it is automated'], 'Clear boundaries and a human fallback')] },
+  { id: 'marketing-growth', day: 7, title: 'Marketing & Growth', label: 'Turn attention into momentum.', duration: '30 min', description: 'Connect your content, offer, and distribution into a growth loop that can teach you something each week.', takeaway: 'A measurable acquisition experiment with one leading signal.', objectives: ['Choose a meaningful growth signal', 'Design a small distribution experiment', 'Read results without chasing noise'], resources: ['Growth loop canvas', 'Experiment brief'], transcript: ['Growth is a learning system before it is a number.', 'Choose one signal that tells you whether the right person is moving closer.', 'Small experiments build confidence faster than big campaigns built on assumptions.'], questions: [question('q7', 'What is the right first step in a growth experiment?', ['Pick a signal connected to the desired action', 'Spend without a hypothesis', 'Measure every number equally', 'Change five variables at once'], 'Pick a signal connected to the desired action')] },
+  { id: 'presentation-pitch', day: 8, title: 'Presentation & Pitch', label: 'Make the idea easy to believe.', duration: '27 min', description: 'Structure a concise pitch that carries context, conviction, and a clear next step for the right audience.', takeaway: 'A five-slide narrative that makes your offer tangible.', objectives: ['Create tension between before and after', 'Use proof without overclaiming', 'End with a specific next step'], resources: ['Five-slide pitch map', 'Proof inventory'], transcript: ['A pitch is a guided change in perspective.', 'Give people enough context to care, enough proof to trust, and a next step they can actually take.', 'Clarity is not making the idea smaller. It is giving it a clean path into someone else’s mind.'], questions: [question('q8', 'What should a strong pitch make clearest?', ['Every internal process', 'The change, proof, and next step', 'A long list of features', 'Only the founder story'], 'The change, proof, and next step')] },
 ];
 
 export const assignments: Assignment[] = [
-  {
-    id: 'opportunity-thesis',
-    day: 1,
-    title: 'Write your opportunity thesis',
-    prompt: 'Complete this sentence in one breath: “I help [specific person] use AI to [specific outcome] without [the expensive or frustrating thing they currently tolerate].”',
-    hint: 'Avoid “everyone”, “save time” and “leverage AI”. Name the person and the moment of friction.',
-    deliverable: 'One clear sentence, plus three lines explaining why you understand this problem.',
-  },
-  {
-    id: 'context-inventory',
-    day: 2,
-    title: 'Map your unfair context',
-    prompt: 'List five situations where you have seen a repeated workflow, question or bottleneck up close. Circle the one you could explain to a stranger with real specificity.',
-    hint: 'Look beyond job titles. Communities, hobbies, side projects and family businesses count.',
-    deliverable: 'Five observations and a short paragraph on the strongest one.',
-  },
-  {
-    id: 'offer-canvas',
-    day: 3,
-    title: 'Shape your beta offer',
-    prompt: 'Describe the smallest paid experience that gets one kind of person from a frustrating before-state to a visible after-state in 30 days.',
-    hint: 'Make the result observable. “Feel more confident” is a feeling; “publish 10 useful posts” is observable.',
-    deliverable: 'Offer name, audience, outcome, format and a first beta price.',
-  },
+  { id: 'prompt-brief', day: 1, title: 'Rewrite one vague request', prompt: 'Take a task you regularly give to AI. Rewrite it with a role, context, constraints, and a clear definition of useful.', hint: 'If the output is hard to evaluate, the brief is probably still too loose.', deliverable: 'One reusable prompt and two lines explaining what changed.' },
+  { id: 'brand-direction', day: 2, title: 'Name your visual direction', prompt: 'Describe the visual system your audience should recognise in three words, then define three things it should never do.', hint: 'Use contrast. “Warm, precise, and kinetic” is more useful than “modern”.', deliverable: 'Three direction words, three guardrails, and one reference asset.' },
+  { id: 'growth-experiment', day: 7, title: 'Design a small growth experiment', prompt: 'Choose one audience, one channel, one hypothesis, and one signal you will inspect over the next seven days.', hint: 'Make the experiment small enough to finish, not impressive enough to postpone.', deliverable: 'A one-page experiment brief with a decision rule.' },
 ];
 
-export const student = {
-  name: 'Aarav Mehta',
-  initials: 'AM',
-  role: 'Founder, Studio North',
-  currentDay: 2,
-  streak: 4,
-  joined: 'September 2024',
-};
+export const student = { name: 'Aarav Mehta', initials: 'AM', role: 'Founder, Studio North', currentDay: 4, streak: 4, joined: 'September 2024' };
 
 export const navItems = [
   { label: 'Overview', href: '/app' },

@@ -1,0 +1,51 @@
+Redesign the current website completely. I do NOT like the current visual style.
+
+Make it a premium, modern AI education/course platform for Social Seller. Do not copy the existing SocialSeller.in design; only reuse relevant real brand content, photos, testimonials and reviews.
+
+Use a completely new professional visual identity with a dark premium theme, vibrant AI accent colors, modern typography, cinematic hero section, smooth scroll-reveal animations, hover interactions, animated gradients and polished micro-interactions. Avoid the current editorial/grid-paper/handwritten style.
+
+Most importantly, this is a REAL COURSE PLATFORM, not only a landing page.
+
+Create a course learning system for the 30-Day AI Mastermind Programme with 8 sessions:
+
+1. Prompt Engineering
+2. Branding & Designing
+3. Social Media Automation
+4. Video Creation & Music
+5. Website Development
+6. WhatsApp & Voice AI Agents
+7. Marketing & Growth
+8. Presentation & Pitch
+
+Each session must be individually clickable.
+
+When a student clicks a session, open a dedicated lesson page containing:
+- Video player
+- Session description
+- Learning objectives
+- Tools/resources
+- Progress indicator
+
+The assessment must remain LOCKED until the student completes the video.
+
+After the video is completed:
+→ unlock the assessment
+→ show questions related specifically to that session/video
+→ allow the student to answer
+→ save answers to PostgreSQL
+→ submit the assessment
+→ generate AI feedback/score
+→ mark the session as completed
+→ allow the student to continue to the next session.
+
+Create a professional student dashboard showing:
+- Overall course progress
+- 8 sessions
+- Completed/unlocked/locked states
+- Continue Learning
+- Assessment status
+- Scores and AI feedback.
+
+Keep the architecture ready for PostgreSQL, authentication, admin management, video storage, payments and AI evaluation.
+
+The final result must look like a premium real-world AI learning platform, not a generic AI landing page.
