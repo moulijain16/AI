@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ArrowDownRight, ArrowLeft, ArrowRight, BarChart3, Bell, BookOpen, Check, CheckCircle2, ChevronRight, Clock3, FileText, LayoutDashboard, LockKeyhole, Menu, MessageSquare, Play, Plus, Search, Settings, Sparkles, Target, Users, X, Zap } from 'lucide-react';
 import { Link, Route, Switch, useLocation, useParams, Router as WouterRouter } from 'wouter';
@@ -73,6 +73,65 @@ function OrbitArtwork() {
   </div>;
 }
 
+const socialSellerSections = [
+  { eyebrow: '01 / Growth', title: 'Growth that compounds.', copy: 'A closer look at the momentum created when practical learning meets a community that keeps showing up.', images: ['revenue1-WhgolYd4.webp', 'revenue2-CySVFtXI.webp'], folder: 'growth', tone: 'primary', contained: false },
+  { eyebrow: '02 / Reviews', title: 'Real words from real learners.', copy: 'The work matters most when it changes what people do next. Here is what the Social Seller community says about that shift.', images: ['wa1-WQhAH3R1.webp', 'wa2-CWCb8sQq.webp', 'wa3-DHnA4XJB.webp', 'wa4-oSkCMTeY.webp'], folder: 'reviews', tone: 'secondary', contained: true },
+  { eyebrow: '03 / Offline Meetups', title: 'The internet, in person.', copy: 'Ideas get sharper in the room. Our offline meetups turn online connection into conversations, collaborations, and new starts.', images: ['off1-C5JLVvWy.webp', 'off2-Dqj4s-iv.webp', 'off3-rLm6QGTH.webp', 'off4-CswFqZs6.webp'], folder: 'meetups', tone: 'accent', contained: false },
+  { eyebrow: '04 / Offline Workshops & Trainings', title: 'Learning that leaves the screen.', copy: 'Focused workshops, shared practice, and hands-on training built for people ready to put new skills to work.', images: ['stu1-j3vEZnad.webp', 'stu2-1cEJcTFs.webp', 'stu3-CKnzi7w_.webp'], folder: 'workshops', tone: 'primary', contained: false },
+  { eyebrow: '05 / Awards', title: 'Recognition for useful work.', copy: 'A moment to celebrate the people and ideas helping shape a more capable digital future.', images: ['cmawardm-BNVMzKlu.webp'], folder: 'awards', tone: 'accent', contained: false },
+  { eyebrow: '06 / Achievements & Awards', title: 'Milestones worth sharing.', copy: 'Every achievement carries a story of consistency, courage, and a willingness to keep learning out loud.', images: ['ai1-DIC_R4-J.webp', 'ai2-DOEvrAzQ.webp', 'ai3-BHys9TU2.webp', 'ai4-ClQq-Bjg.webp', 'ai9-Blc4gs4G.webp'], folder: 'achievements', tone: 'secondary', contained: false },
+  { eyebrow: '07 / Sharing Stage', title: 'Make room for your voice.', copy: 'From first talk to full room, the stage is where experience becomes an invitation for someone else to begin.', images: ['2ritesh-BsLw9cO3.webp', '3vaibhav-DfLahuHt.webp', '4ishan-BmjQ_SE0.webp', '8rj-CH4EyxMd.webp'], folder: 'stage', tone: 'primary', contained: false },
+  { eyebrow: '08 / Media Reviews', title: 'The conversation travels.', copy: 'Our work has found its way into the wider conversation about creators, commerce, and the future of learning.', images: ['news1-BfCxKb0l.webp', 'news2-CMXFWzAl.webp', 'news3-CLYE_rJg.webp'], folder: 'media', tone: 'accent', contained: true },
+  { eyebrow: '09 / Meet Our Team', title: 'People make the platform.', copy: 'A small, curious team building the systems, spaces, and support that help ambitious people move forward.', images: ['team1-xYBk_ZLO.webp', 'team2-DlukPSr0.webp'], folder: 'meet-our-team', tone: 'secondary', contained: false },
+] as const;
+
+type SocialSellerSection = (typeof socialSellerSections)[number];
+
+function StorySection({ section, index }: { section: SocialSellerSection; index: number }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const toneClass = section.tone === 'secondary' ? 'text-secondary' : section.tone === 'accent' ? 'text-accent' : 'text-primary';
+
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        element.classList.add('is-visible');
+        observer.disconnect();
+      }
+    }, { threshold: 0.12 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return <section ref={sectionRef} className="scroll-reveal border-t border-border/80">
+    <div className="mx-auto max-w-[1240px] px-5 py-20 sm:py-28 lg:px-8">
+      <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <div className="lg:sticky lg:top-24 lg:self-start">
+          <p className={`font-mono-ui text-[10px] uppercase tracking-[.2em] ${toneClass}`}>{section.eyebrow}</p>
+          <h2 className="mt-5 max-w-md text-5xl font-bold leading-[.94] tracking-[-.06em] sm:text-6xl">{section.title}</h2>
+          <p className="mt-6 max-w-sm text-sm leading-7 text-muted-foreground">{section.copy}</p>
+          <span className={`mt-8 block font-mono-ui text-[10px] uppercase tracking-[.2em] ${toneClass}`}>0{index + 1} <span className="text-muted-foreground/40">/ 09</span></span>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {section.images.map((image, imageIndex) => <figure key={image} className={`group relative overflow-hidden rounded-xl border border-border bg-card ${section.images.length === 1 ? 'mx-auto w-full max-w-2xl' : ''} ${section.images.length === 3 && imageIndex === 0 ? 'sm:row-span-2' : ''}`}>
+            <img src={`/images/social-seller/${section.folder}/${image}`} alt={`${section.eyebrow.replace(/^\d+ \/ /, '')} ${imageIndex + 1}`} className={`h-full w-full transition duration-700 ease-out group-hover:scale-[1.025] ${section.contained ? 'object-contain bg-white p-2' : 'object-cover'} ${section.images.length === 1 ? 'max-h-[560px]' : 'min-h-[220px]'}`} loading="lazy" />
+            <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </figure>)}
+        </div>
+      </div>
+    </div>
+  </section>;
+}
+
+function SocialSellerSections() {
+  return <div className="social-proof-sections bg-background/80">{socialSellerSections.map((section, index) => <StorySection key={section.eyebrow} section={section} index={index} />)}</div>;
+}
+
+function Programme() {
+  return <div className="grain min-h-[100dvh] bg-background"><PageMeta title="30-Day AI Mastermind Programme" description="Explore the eight sessions in the 30-Day AI Mastermind Programme." /><PublicNav /><main className="mx-auto max-w-[1240px] px-5 pb-24 pt-36 lg:px-8 lg:pt-44"><div className="mx-auto max-w-3xl text-center reveal"><p className="font-mono-ui text-[10px] uppercase tracking-[.2em] text-primary">30-day AI mastermind programme</p><h1 className="mt-5 text-5xl font-bold leading-[.94] tracking-[-.06em] sm:text-7xl">Build practical AI skills<br /><span className="text-primary">one session at a time.</span></h1><p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted-foreground">Eight focused sessions with clear outcomes, practical assignments, and a learning path built to help you move from idea to implementation.</p></div><div className="mt-14 grid gap-4 md:grid-cols-2">{sessions.map((session) => <Link key={session.id} href={`/app/sessions/${session.id}`} className="group flex gap-5 rounded-xl border border-border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg" data-testid={`programme-session-${session.id}`}><span className="grid size-14 shrink-0 place-items-center rounded-lg bg-muted font-mono-ui text-sm font-bold text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">0{session.day}</span><span className="min-w-0"><span className="flex items-center justify-between gap-3"><span className="text-xs font-bold uppercase tracking-[.12em] text-muted-foreground">Session {session.day}</span><ArrowRight size={16} className="shrink-0 text-primary transition-transform group-hover:translate-x-1" /></span><h2 className="mt-2 text-xl font-bold tracking-[-.03em]">{session.title}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{session.description}</p><span className="mt-4 inline-block text-xs font-bold text-primary">View description, learning outcomes & assessment</span></span></Link>)}</div></main><footer className="mx-auto flex max-w-[1240px] flex-col gap-4 border-t border-border px-5 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8"><BrandMark compact /><p>© 2024 Social Seller AI. Built for useful momentum.</p></footer></div>;
+}
+
 function Home() {
   return <div className="grain min-h-[100dvh] bg-background">
     <PageMeta title="Build with AI, on purpose" description="The 30-Day AI Mastermind Programme for creators and founders." />
@@ -98,6 +157,7 @@ function Home() {
       </section>
       <section id="curriculum" className="border-y border-border bg-card/35"><div className="mx-auto max-w-[1240px] px-5 py-20 sm:py-28 lg:px-8"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="font-mono-ui text-[10px] uppercase tracking-[.2em] text-secondary">02 / The curriculum</p><h2 className="mt-4 text-5xl font-bold leading-[.95] tracking-[-.06em] sm:text-6xl">Eight moves to<br /><span className="text-primary">make it real.</span></h2></div><p className="max-w-xs text-sm leading-6 text-muted-foreground">A sequence that follows the work: think clearly, create the surface, build distribution, make the case.</p></div><div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{sessions.map((session) => <Link key={session.id} href="/signup" className="group rounded-xl border border-border bg-background/70 p-5 transition-all hover:-translate-y-1 hover:border-primary/60 hover:bg-primary/5" data-testid={`link-public-session-${session.id}`}><div className="flex items-center justify-between font-mono-ui text-[10px] text-muted-foreground"><span>0{session.day}</span><ArrowRight size={14} className="text-primary transition-transform group-hover:translate-x-1" /></div><h3 className="mt-12 min-h-14 text-lg font-bold leading-tight">{session.title}</h3><p className="mt-3 text-xs leading-5 text-muted-foreground">{session.label}</p></Link>)}</div></div></section>
       <section className="mx-auto max-w-[1240px] px-5 py-20 sm:py-28 lg:px-8"><div className="rounded-2xl border border-primary/20 bg-[#10182b] p-7 sm:p-12 lg:grid lg:grid-cols-[1fr_.8fr] lg:items-center lg:gap-20"><div><p className="font-mono-ui text-[10px] uppercase tracking-[.2em] text-accent">03 / Made for momentum</p><h2 className="mt-5 max-w-xl text-5xl font-bold leading-[.94] tracking-[-.06em] sm:text-6xl">A course you can<br /><span className="text-accent">actually finish.</span></h2><p className="mt-6 max-w-md leading-7 text-foreground/65">Watch a focused lesson, complete the assessment, see your feedback, and know exactly where to go next. The platform keeps the path visible.</p><Link href="/signup" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3.5 text-sm font-bold text-accent-foreground transition-transform hover:-translate-y-1" data-testid="link-bottom-start">Start your first session <ArrowRight size={16} /></Link></div><div className="mt-10 grid gap-3 lg:mt-0"><div className="flex items-center gap-4 rounded-xl border border-border bg-background/50 p-4"><span className="grid size-10 place-items-center rounded-lg bg-primary/15 text-primary"><Play size={17} /></span><div><p className="text-sm font-bold">Watch</p><p className="text-xs text-muted-foreground">Focused video lessons</p></div><Check size={16} className="ml-auto text-primary" /></div><div className="flex items-center gap-4 rounded-xl border border-border bg-background/50 p-4"><span className="grid size-10 place-items-center rounded-lg bg-secondary/15 text-secondary"><Sparkles size={17} /></span><div><p className="text-sm font-bold">Apply</p><p className="text-xs text-muted-foreground">Session-specific assessment</p></div><Check size={16} className="ml-auto text-secondary" /></div><div className="flex items-center gap-4 rounded-xl border border-border bg-background/50 p-4"><span className="grid size-10 place-items-center rounded-lg bg-accent/15 text-accent"><ArrowRight size={17} /></span><div><p className="text-sm font-bold">Move forward</p><p className="text-xs text-muted-foreground">Feedback and next session</p></div><Check size={16} className="ml-auto text-accent" /></div></div></div></section>
+      <SocialSellerSections />
     </main>
     <footer className="mx-auto flex max-w-[1240px] flex-col gap-4 border-t border-border px-5 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8"><BrandMark compact /><p>© 2024 Social Seller AI. Built for useful momentum.</p></footer>
   </div>;

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags (defaults; SPA updates per route via Seo.jsx) -->
+    <title>AI Earning Ideas &amp; Workshops India | Social Seller Academy</title>
+    <meta name="title" content="AI Earning Ideas &amp; Workshops India | Social Seller Academy" />
+    <meta name="description" content="Join 25,000+ entrepreneurs learning to earn money with AI. Explore AI business ideas, zero investment startup ideas &amp; live workshops in Hindi. By Lakshit Sethiya." />
+    <meta name="keywords" content="earn money with AI, AI income online, AI earning ideas India, AI business ideas India zero investment, AI workshop India, AI workshop Hindi, social seller academy, academy.socialseller.in, lakshit sethiya, AI course earn money India, online AI workshop, AI side hustle India" />
+    <meta name="author" content="Social Seller Academy" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#0b0f16" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://academy.socialseller.in" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://academy.socialseller.in" />
+    <meta property="og:title" content="AI Earning Ideas &amp; Workshops India | Social Seller Academy" />
+    <meta property="og:description" content="Join 25,000+ entrepreneurs learning to earn money with AI. AI business ideas, zero investment ideas &amp; live workshops in Hindi. By Lakshit Sethiya." />
+    <meta property="og:image" content="https://academy.socialseller.in/og-social.webp" />
+    <meta property="og:image:alt" content="Social Seller Academy - AI and Marketing Training" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Social Seller Academy" />
+    <meta property="og:locale" content="en_IN" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://academy.socialseller.in" />
+    <meta name="twitter:title" content="AI Earning Ideas &amp; Workshops India | Social Seller Academy" />
+    <meta name="twitter:description" content="Earn money with AI—business ideas, zero investment paths &amp; live workshops in Hindi. 25,000+ entrepreneurs. Lakshit Sethiya." />
+    <meta name="twitter:image" content="https://academy.socialseller.in/og-social.webp" />
+    <meta name="twitter:site" content="@socialseller" />
+    <meta name="twitter:creator" content="@socialseller" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+    <meta name="application-name" content="Social Seller Academy" />
+    <meta name="apple-mobile-web-app-title" content="SSA Academy" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Structured Data Hints -->
+    <meta name="organization" content="Social Seller Academy" />
+    <meta name="contact" content="https://wa.link/9xcobb" />
+    
+    <!-- Performance hints without parser-blocking inline JS -->
+    <link rel="preconnect" href="https://fast.wistia.net" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+    <link rel="dns-prefetch" href="https://wa.link" />
+    <link rel="preload" href="/logowhite.png" as="image" type="image/png" fetchpriority="high" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Social Seller Academy",
+      "description": "Social Seller Academy (academy.socialseller.in) helps Indians learn AI income online, earn money with AI tools, and start zero-investment AI businesses—with live workshops in Hindi & English by Lakshit Sethiya.",
+      "url": "https://academy.socialseller.in",
+      "logo": "https://academy.socialseller.in/og-social.webp",
+      "image": "https://academy.socialseller.in/og-social.webp",
+      "founder": {
+        "@type": "Person",
+        "name": "Lakshit Sethiya"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.youtube.com/@SocialSeller"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "25000"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "AI Earning & Marketing Masterclass",
+      "description": "Live AI earning workshop—learn AI business ideas, tools for income, and digital growth with Lakshit Sethiya",
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Social Seller Academy"
+      },
+      "instructor": {
+        "@type": "Person",
+        "name": "Lakshit Sethiya"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Social Seller Academy",
+      "url": "https://academy.socialseller.in",
+      "description": "Earn money with AI—AI business ideas India, online workshops, courses, and mentorship at academy.socialseller.in.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Social Seller Academy",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://academy.socialseller.in/og-social.webp"
+        }
+      }
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CBdbOUn3.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-CyTVz2OA.js">
+    <link rel="modulepreload" crossorigin href="/assets/swiper-vendor-DcBLpm2P.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-IQ9XgY7D.js">
+    <link rel="stylesheet" crossorigin href="/assets/vendor-Del57GOq.css">
+    <link rel="stylesheet" crossorigin href="/assets/swiper-vendor-Cm8ke0I4.css">
+    <link rel="stylesheet" crossorigin href="/assets/react-vendor-BEih8O7c.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-C-f0oprE.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
