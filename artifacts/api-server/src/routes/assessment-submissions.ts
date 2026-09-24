@@ -60,7 +60,7 @@ async function evaluateWithGemini(assessmentId: string, answer: string | null, u
   let responseStatus = 0;
 
   for (let attempt = 0; attempt < 4; attempt++) {
-    let response: Response;
+   let response: Awaited<ReturnType<typeof fetch>>;
     try {
       response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`,
