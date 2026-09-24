@@ -1,8 +1,13 @@
 import express, { type Express, type NextFunction, type Request, type Response } from "express";
 import cors from "cors";
-import { pinoHttp } from "pino-http";
+import * as pinoHttpModule from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
+
+// Works however the package exports itself (default, named or CommonJS)
+const pinoHttp = ((pinoHttpModule as any).pinoHttp ??
+  (pinoHttpModule as any).default ??
+  pinoHttpModule) as (opts?: any) => any;
 
 const app: Express = express();
 
@@ -10,14 +15,14 @@ app.use(
   pinoHttp({
     logger,
     serializers: {
-      req(req) {
+      req(req: any) {
         return {
           id: req.id,
           method: req.method,
           url: req.url?.split("?")[0],
         };
       },
-      res(res) {
+      res(res: any) {
         return {
           statusCode: res.statusCode,
         };
