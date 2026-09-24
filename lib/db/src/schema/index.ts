@@ -1,3 +1,19 @@
+import { integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+
+export const assessmentSubmissions = pgTable("assessment_submissions", {
+	id: uuid("id").defaultRandom().primaryKey(),
+	learnerId: text("learner_id").notNull().default("anonymous"),
+	sessionId: text("session_id").notNull(),
+	assessmentId: text("assessment_id").notNull(),
+	answer: text("answer"),
+	uploadedImage: text("uploaded_image"),
+	score: integer("score").notNull(),
+	feedback: text("feedback").notNull(),
+	strengths: text("strengths").notNull(),
+	improvements: text("improvements").notNull(),
+	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 // Export your models here. Add one export per file
 // export * from "./posts";
 //

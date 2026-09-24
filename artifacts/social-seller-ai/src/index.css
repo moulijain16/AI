@@ -130,3 +130,4 @@
 }
 .scrollbar-thin::-webkit-scrollbar { width: 5px; height: 5px; }
 .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--muted-foreground) / .3); border-radius: 99px; }
+.grain > main > section:nth-of-type(4) { display: none; }
